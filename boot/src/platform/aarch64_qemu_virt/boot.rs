@@ -1,6 +1,6 @@
 use aarch64_cpu::{asm, asm::barrier, registers::*};
 use tock_registers::interfaces::{ReadWriteable, Readable, Writeable};
-use axconfig::TASK_STACK_SIZE;
+use config::TASK_STACK_SIZE;
 use super::desc::{DescriptorAttr, MappingFlags, MemAttr};
 
 const PHYS_ADDR_MASK: usize = 0x0000_ffff_ffff_f000; // bits 12..48
@@ -153,7 +153,7 @@ unsafe extern "C" fn _start() -> ! {
         enable_fp = sym enable_fp,
         boot_stack = sym BOOT_STACK,
         boot_stack_size = const TASK_STACK_SIZE,
-        phys_virt_offset = const axconfig::PHYS_VIRT_OFFSET,
+        phys_virt_offset = const config::PHYS_VIRT_OFFSET,
         entry = sym super::rust_entry,
         options(noreturn),
     )

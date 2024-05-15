@@ -1,5 +1,5 @@
 use riscv::register::satp;
-use axconfig::{PHYS_VIRT_OFFSET, TASK_STACK_SIZE};
+use config::{PHYS_VIRT_OFFSET, TASK_STACK_SIZE};
 
 #[link_section = ".bss.stack"]
 pub static mut BOOT_STACK: [u8; TASK_STACK_SIZE] = [0; TASK_STACK_SIZE];
